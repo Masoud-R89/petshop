@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+    {% block title %}Sign up{% endblock %}
+{% block content %}
+    <h1 class="text-xl">Login</h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <button class="py-4 px-4 bg-teal-800 text-white">Login</button>
+    </form>
+
+    <hr>
+
+    <h3>
+        if you are not register please <a href="{% url 'signup' %}">sign up</a>
+    </h3>
+{% endblock %}

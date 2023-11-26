@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .cart import Cart
+from .forms import OrderForm
 from .models import Product,Category
 
 # Create your views here.
@@ -42,7 +43,14 @@ def cart_view(request):
 
 @login_required
 def checkout(request):
-    return render(request, 'store/checkout.html')
+    cart = Cart(request)
+
+    form = OrderForm()
+
+    return render(request, 'store/checkout.html', {
+        'cart':cart,
+        'form':form,
+    })
 
 def search(request):
     query = request.GET.get('query', '')

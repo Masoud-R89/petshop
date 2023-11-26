@@ -79,3 +79,20 @@ class Product(models.Model):
 
         return thumbnail
 
+class Order(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    address = models.CharField(max_length=350)
+    zipcode = models.CharField(max_length=25)
+    city = models.CharField(max_length=40)
+    paid_amount = models.IntegerField(default=0)
+    is_paid = models.BooleanField(default=False)
+    merchant_id = models.CharField(max_length=255)
+    create_by = models.ForeignKey(User, related_name='orders', on_delete=models.SET_NULL, null=True)
+    create_at = models.DateTimeField(auto_now_add=True)
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='items', on_delete=models.CASCADE)
+    price = models.IntegerField()
+    quantity = models.IntegerField(default=1)

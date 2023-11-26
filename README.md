@@ -32,6 +32,3 @@
 - Vendors must be able to see what they have earned
 - Implement payment gateway
 - Deploy project
-
-
-- this is test for brnching

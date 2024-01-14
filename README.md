@@ -32,3 +32,15 @@
 - Vendors must be able to see what they have earned
 - Implement payment gateway
 - Deploy project
+
+### Deploy Commands
+
+#### update requirements.txt
+```sh
+pip freeze > requirements.txt
+```
+
+#### add git
+```sh
+git init
+```
